@@ -1,51 +1,43 @@
-import { useEffect, useState } from "react"
-import API from "../../api/axios"
-import AdminLayout from "../../layouts/AdminLayout"
-import StoreForm from "../../components/forms/StoreForm"
-import toast from "react-hot-toast"
+import { useEffect, useState } from "react";
+import API from "../../api/axios";
+import AdminLayout from "../../layouts/AdminLayout";
+import StoreForm from "../../components/forms/StoreForm";
+import toast from "react-hot-toast";
 
 const CreateStore = () => {
-  const [owners, setOwners] = useState([])
+  const [owners, setOwners] = useState([]);
 
   useEffect(() => {
-    fetchOwners()
-  }, [])
+    fetchOwners();
+  }, []);
 
   const fetchOwners = async () => {
     try {
-      const { data } = await API.get(
-        "/admin/store-owners"
-      )
+      const { data } = await API.get("/admin/store-owners");
 
-      setOwners(data)
+      setOwners(data);
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
     }
-  }
+  };
 
   const submitHandler = async (formData) => {
     try {
-      const { data } = await API.post(
-        "/admin/create-store",
-        formData
-      )
+      const { data } = await API.post("/admin/create-store", formData);
 
-      toast.success(data.message)
+      toast.success(data.message);
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
     }
-  }
+  };
 
   return (
     <AdminLayout>
       <div className="max-w-2xl mx-auto">
-        <StoreForm
-          owners={owners}
-          onSubmit={submitHandler}
-        />
+        <StoreForm onSubmit={submitHandler} owners={owners} />
       </div>
     </AdminLayout>
-  )
-}
+  );
+};
 
-export default CreateStore
+export default CreateStore;

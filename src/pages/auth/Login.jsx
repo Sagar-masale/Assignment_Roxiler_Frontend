@@ -35,7 +35,8 @@ const Login = () => {
       )
 
       login(data)
-
+      
+      
       toast.success("Login successful")
 
       if (data.user.role === "admin") {

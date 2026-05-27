@@ -3,6 +3,9 @@ import { Link, useNavigate } from "react-router-dom"
 import toast from "react-hot-toast"
 import API from "../../api/axios"
 
+
+
+
 const Signup = () => {
   const navigate = useNavigate()
 

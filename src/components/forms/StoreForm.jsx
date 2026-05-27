@@ -1,11 +1,12 @@
 import { useState } from "react"
 
-const StoreForm = ({ onSubmit }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    address: "",
-  })
+const StoreForm = ({ onSubmit, owners }) => {
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  address: "",
+  owner: "",
+})
 
   const handleChange = (e) => {
     setFormData({
@@ -70,6 +71,24 @@ const StoreForm = ({ onSubmit }) => {
       <button className="w-full bg-black text-white py-3 rounded-xl">
         Create Store
       </button>
+      <select
+  name="owner"
+  onChange={handleChange}
+  className="w-full border rounded-xl p-3"
+>
+  <option value="">
+    Select Owner
+  </option>
+
+  {owners.map((owner) => (
+    <option
+      key={owner._id}
+      value={owner._id}
+    >
+      {owner.name}
+    </option>
+  ))}
+</select>
     </form>
   )
 }

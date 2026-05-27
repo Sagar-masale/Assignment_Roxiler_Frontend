@@ -5,7 +5,7 @@ import Signup from "../pages/auth/Signup"
 
 import AdminDashboard from "../pages/admin/Dashboard"
 import AdminUsers from "../pages/admin/Users"
-import AdminStores from "../pages/admin/Stores"
+import AdminStores from "../pages/admin/Stores";
 import CreateUser from "../pages/admin/CreateUser"
 import CreateStore from "../pages/admin/CreateStore"
 import UserDetails from "../pages/admin/UserDetails"

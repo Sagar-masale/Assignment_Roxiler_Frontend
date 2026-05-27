@@ -5,6 +5,8 @@ import toast from "react-hot-toast"
 
 const Ratings = () => {
   const [ratings, setRatings] = useState([])
+  const [loading, setLoading] =
+    useState(false)
 
   useEffect(() => {
     fetchRatings()
@@ -12,57 +14,85 @@ const Ratings = () => {
 
   const fetchRatings = async () => {
     try {
+      setLoading(true)
+
       const { data } = await API.get(
         "/owner/ratings"
       )
 
       setRatings(data)
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(
+        error.response?.data?.message
+      )
+    } finally {
+      setLoading(false)
     }
   }
 
   return (
     <OwnerLayout>
-      <div className="bg-white rounded-2xl border overflow-auto">
-        <table className="w-full">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="text-left p-4">
-                User
-              </th>
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-3xl font-bold">
+            Ratings
+          </h1>
 
-              <th className="text-left p-4">
-                Email
-              </th>
+          <p className="text-gray-500 mt-2">
+            Users who rated your store
+          </p>
+        </div>
 
-              <th className="text-left p-4">
-                Rating
-              </th>
-            </tr>
-          </thead>
+        <div className="bg-white rounded-2xl border overflow-auto">
+          {loading ? (
+            <div className="p-6">
+              Loading...
+            </div>
+          ) : ratings.length === 0 ? (
+            <div className="p-6 text-gray-500">
+              No ratings found
+            </div>
+          ) : (
+            <table className="w-full">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="text-left p-4">
+                    User
+                  </th>
 
-          <tbody>
-            {ratings.map((item) => (
-              <tr
-                key={item._id}
-                className="border-t"
-              >
-                <td className="p-4">
-                  {item.user.name}
-                </td>
+                  <th className="text-left p-4">
+                    Email
+                  </th>
 
-                <td className="p-4">
-                  {item.user.email}
-                </td>
+                  <th className="text-left p-4">
+                    Rating
+                  </th>
+                </tr>
+              </thead>
 
-                <td className="p-4">
-                  {item.rating}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+              <tbody>
+                {ratings.map((item) => (
+                  <tr
+                    key={item._id}
+                    className="border-t"
+                  >
+                    <td className="p-4">
+                      {item.user?.name}
+                    </td>
+
+                    <td className="p-4">
+                      {item.user?.email}
+                    </td>
+
+                    <td className="p-4 font-semibold">
+                      {item.rating} / 5
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
       </div>
     </OwnerLayout>
   )
