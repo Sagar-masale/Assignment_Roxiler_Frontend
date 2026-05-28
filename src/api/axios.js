@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://assignment-roxiler-backend.onrender.com",
+  baseURL: "https://assignment-roxiler-backend.onrender.com/api",
 });
 
 API.interceptors.request.use(
