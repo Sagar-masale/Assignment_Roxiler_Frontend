@@ -1,18 +1,16 @@
-import { Link, useLocation } from "react-router-dom"
-import useAuth from "../../hooks/useAuth"
+import { Link, useLocation } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Sidebar = () => {
-  const { user } = useAuth()
+  const { user } = useAuth();
 
-  const location = useLocation()
+  const location = useLocation();
 
-  if (!user) return null
+  if (!user) return null;
 
   return (
     <div className="w-[250px] min-h-[calc(100vh-70px)] bg-black text-white p-5">
-      <h1 className="text-2xl font-bold mb-10">
-        Dashboard
-      </h1>
+      <h1 className="text-2xl font-bold mb-10">Dashboard</h1>
 
       <div className="flex flex-col gap-3">
         {user.role === "admin" && (
@@ -31,8 +29,7 @@ const Sidebar = () => {
             <Link
               to="/admin/users"
               className={`p-3 rounded-xl ${
-                location.pathname ===
-                "/admin/users"
+                location.pathname === "/admin/users"
                   ? "bg-white text-black"
                   : "hover:bg-zinc-800"
               }`}
@@ -43,8 +40,7 @@ const Sidebar = () => {
             <Link
               to="/admin/stores"
               className={`p-3 rounded-xl ${
-                location.pathname ===
-                "/admin/stores"
+                location.pathname === "/admin/stores"
                   ? "bg-white text-black"
                   : "hover:bg-zinc-800"
               }`}
@@ -55,8 +51,7 @@ const Sidebar = () => {
             <Link
               to="/admin/create-user"
               className={`p-3 rounded-xl ${
-                location.pathname ===
-                "/admin/create-user"
+                location.pathname === "/admin/create-user"
                   ? "bg-white text-black"
                   : "hover:bg-zinc-800"
               }`}
@@ -67,8 +62,7 @@ const Sidebar = () => {
             <Link
               to="/admin/create-store"
               className={`p-3 rounded-xl ${
-                location.pathname ===
-                "/admin/create-store"
+                location.pathname === "/admin/create-store"
                   ? "bg-white text-black"
                   : "hover:bg-zinc-800"
               }`}
@@ -120,8 +114,7 @@ const Sidebar = () => {
             <Link
               to="/owner/ratings"
               className={`p-3 rounded-xl ${
-                location.pathname ===
-                "/owner/ratings"
+                location.pathname === "/owner/ratings"
                   ? "bg-white text-black"
                   : "hover:bg-zinc-800"
               }`}
@@ -132,7 +125,7 @@ const Sidebar = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

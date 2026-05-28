@@ -1,44 +1,37 @@
-import { useEffect, useState } from "react"
-import API from "../../api/axios"
-import UserLayout from "../../layouts/UserLayout"
-import StoreCard from "../../components/store/StoreCard"
-import SearchBar from "../../components/common/SearchBar"
-import toast from "react-hot-toast"
+import { useEffect, useState } from "react";
+import API from "../../api/axios";
+import UserLayout from "../../layouts/UserLayout";
+import StoreCard from "../../components/store/StoreCard";
+import SearchBar from "../../components/common/SearchBar";
+import toast from "react-hot-toast";
 
 const Stores = () => {
-  const [stores, setStores] = useState([])
-  const [search, setSearch] = useState("")
+  const [stores, setStores] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetchStores()
-  }, [])
+    fetchStores();
+  }, []);
 
   const fetchStores = async () => {
     try {
-      const { data } = await API.get("/stores/all")
-      setStores(data)
+      const { data } = await API.get("/stores/all");
+      setStores(data);
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
     }
-  }
+  };
 
   const filteredStores = stores.filter(
     (store) =>
-      store.name
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-      store.address
-        .toLowerCase()
-        .includes(search.toLowerCase())
-  )
+      store.name.toLowerCase().includes(search.toLowerCase()) ||
+      store.address.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
     <UserLayout>
       <div className="space-y-8">
-        <SearchBar
-          search={search}
-          setSearch={setSearch}
-        />
+        <SearchBar search={search} setSearch={setSearch} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredStores.map((store) => (
@@ -51,7 +44,7 @@ const Stores = () => {
         </div>
       </div>
     </UserLayout>
-  )
-}
+  );
+};
 
-export default Stores
+export default Stores;

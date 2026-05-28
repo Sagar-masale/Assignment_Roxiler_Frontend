@@ -1,5 +1,5 @@
-import Navbar from "../components/common/Navbar"
-import Sidebar from "../components/common/Sidebar"
+import Navbar from "../components/common/Navbar";
+import Sidebar from "../components/common/Sidebar";
 
 const AdminLayout = ({ children }) => {
   return (
@@ -9,12 +9,10 @@ const AdminLayout = ({ children }) => {
       <div className="flex">
         <Sidebar />
 
-        <div className="flex-1 p-6">
-          {children}
-        </div>
+        <div className="flex-1 p-6">{children}</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AdminLayout
+export default AdminLayout;

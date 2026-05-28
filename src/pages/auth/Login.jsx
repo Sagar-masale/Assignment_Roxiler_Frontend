@@ -1,61 +1,57 @@
-import { useContext, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import toast from "react-hot-toast"
-import API from "../../api/axios"
-import { AuthContext } from "../../context/AuthContext"
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import API from "../../api/axios";
+import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const { login } = useContext(AuthContext)
+  const { login } = useContext(AuthContext);
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-  })
+  });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const submitHandler = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
-      setLoading(true)
+      setLoading(true);
 
-      const { data } = await API.post(
-        "/auth/login",
-        formData
-      )
+      const { data } = await API.post("/auth/login", formData);
 
-      login(data)
-      
-      
-      toast.success("Login successful")
+      login(data);
+
+      toast.success("Login successful");
 
       if (data.user.role === "admin") {
-        navigate("/admin")
+        navigate("/admin");
       }
 
       if (data.user.role === "user") {
-        navigate("/stores")
+        navigate("/stores");
       }
 
       if (data.user.role === "owner") {
-        navigate("/owner")
+        navigate("/owner");
       }
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-[#f5f7fb] flex items-center justify-center">
@@ -64,13 +60,9 @@ const Login = () => {
         className="bg-white p-10 rounded-3xl border w-[450px] space-y-5"
       >
         <div className="text-center">
-          <h1 className="text-3xl font-bold">
-            Welcome Back
-          </h1>
+          <h1 className="text-3xl font-bold">Welcome Back</h1>
 
-          <p className="text-gray-500 mt-2">
-            Login to continue
-          </p>
+          <p className="text-gray-500 mt-2">Login to continue</p>
         </div>
 
         <input
@@ -98,16 +90,13 @@ const Login = () => {
 
         <p className="text-center text-gray-500">
           Don't have an account?{" "}
-          <Link
-            to="/signup"
-            className="text-black font-semibold"
-          >
+          <Link to="/signup" className="text-black font-semibold">
             Signup
           </Link>
         </p>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

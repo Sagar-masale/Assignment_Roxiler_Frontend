@@ -1,32 +1,22 @@
-import {
-  LayoutDashboard,
-  Star,
-  Lock,
-  LogOut,
-} from "lucide-react"
+import { LayoutDashboard, Star, Lock, LogOut } from "lucide-react";
 
-import {
-  NavLink,
-  useNavigate,
-} from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom";
 
 const OwnerLayout = ({ children }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
-    localStorage.removeItem("token")
-    localStorage.removeItem("user")
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
 
-    navigate("/")
-  }
+    navigate("/");
+  };
 
   return (
     <div className="flex min-h-screen bg-[#f5f7fb]">
       <div className="w-[260px] bg-white border-r p-6 flex flex-col justify-between">
         <div>
-          <h1 className="text-2xl font-bold mb-10">
-            Store Panel
-          </h1>
+          <h1 className="text-2xl font-bold mb-10">Store Panel</h1>
 
           <div className="space-y-3">
             <NavLink
@@ -64,11 +54,9 @@ const OwnerLayout = ({ children }) => {
         </button>
       </div>
 
-      <div className="flex-1 p-8">
-        {children}
-      </div>
+      <div className="flex-1 p-8">{children}</div>
     </div>
-  )
-}
+  );
+};
 
-export default OwnerLayout
+export default OwnerLayout;
