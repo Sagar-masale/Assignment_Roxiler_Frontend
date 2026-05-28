@@ -8,6 +8,14 @@ const CreateUser = () => {
   const [loading, setLoading] = useState(false);
 
   const submitHandler = async (formData) => {
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[\W_]).{8,16}$/;
+
+    if (!passwordRegex.test(formData.password)) {
+      return toast.error(
+        "Password must contain uppercase and special character",
+      );
+    }
+
     try {
       setLoading(true);
 
@@ -15,7 +23,7 @@ const CreateUser = () => {
 
       toast.success(data.message);
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message);
     } finally {
       setLoading(false);
     }
