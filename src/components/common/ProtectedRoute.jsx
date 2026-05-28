@@ -1,22 +1,22 @@
-import { Navigate } from "react-router-dom"
-import useAuth from "../../hooks/useAuth"
+import { Navigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const ProtectedRoute = ({ children, role }) => {
-  const { user, loading } = useAuth()
+  const { user, loading } = useAuth();
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   if (!user) {
-    return <Navigate to="/" />
+    return <Navigate to="/" />;
   }
 
   if (role && user.role !== role) {
-    return <Navigate to="/" />
+    return <Navigate to="/" />;
   }
 
-  return children
-}
+  return children;
+};
 
-export default ProtectedRoute
+export default ProtectedRoute;

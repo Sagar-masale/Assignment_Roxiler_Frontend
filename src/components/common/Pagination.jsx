@@ -1,8 +1,4 @@
-const Pagination = ({
-  currentPage,
-  totalPages,
-  setCurrentPage,
-}) => {
+const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
   return (
     <div className="flex items-center gap-3 mt-8">
       <button
@@ -25,7 +21,7 @@ const Pagination = ({
         Next
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Pagination
+export default Pagination;

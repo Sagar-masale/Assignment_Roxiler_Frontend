@@ -5,7 +5,7 @@ const StatCard = ({ title, value }) => {
 
       <h1 className="text-4xl font-bold mt-4">{value}</h1>
     </div>
-  )
-}
+  );
+};
 
-export default StatCard
+export default StatCard;

@@ -1,35 +1,31 @@
-import { useState } from "react"
-import API from "../../api/axios"
-import toast from "react-hot-toast"
+import { useState } from "react";
+import API from "../../api/axios";
+import toast from "react-hot-toast";
 
 const StoreCard = ({ store, fetchStores }) => {
-  const [rating, setRating] = useState(1)
+  const [rating, setRating] = useState(1);
 
   const submitRating = async () => {
     try {
       const { data } = await API.post("/ratings/submit", {
         storeId: store._id,
         rating,
-      })
+      });
 
-      toast.success(data.message)
+      toast.success(data.message);
 
-      fetchStores()
+      fetchStores();
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
     }
-  }
+  };
 
   return (
     <div className="bg-white border rounded-2xl p-6 space-y-4">
       <div>
-        <h1 className="text-2xl font-semibold">
-          {store.name}
-        </h1>
+        <h1 className="text-2xl font-semibold">{store.name}</h1>
 
-        <p className="text-gray-500 mt-2">
-          {store.address}
-        </p>
+        <p className="text-gray-500 mt-2">{store.address}</p>
       </div>
 
       <div className="space-y-1">
@@ -68,7 +64,7 @@ const StoreCard = ({ store, fetchStores }) => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default StoreCard
+export default StoreCard;

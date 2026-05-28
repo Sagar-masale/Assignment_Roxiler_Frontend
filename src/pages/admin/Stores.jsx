@@ -16,6 +16,8 @@ const Stores = () => {
   const fetchStores = async () => {
     try {
       const { data } = await API.get("/stores/all");
+      console.log(data);
+      
       setStores(data);
     } catch (error) {
       toast.error(error.response.data.message);

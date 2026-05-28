@@ -1,13 +1,13 @@
-import { useState } from "react"
+import { useState } from "react";
 
 const PasswordForm = ({ onSubmit }) => {
-  const [password, setPassword] = useState("")
+  const [password, setPassword] = useState("");
 
   const submitHandler = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    onSubmit(password)
-  }
+    onSubmit(password);
+  };
 
   return (
     <form
@@ -26,7 +26,7 @@ const PasswordForm = ({ onSubmit }) => {
         Update Password
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default PasswordForm
+export default PasswordForm;

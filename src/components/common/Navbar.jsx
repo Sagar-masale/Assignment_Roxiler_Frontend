@@ -1,15 +1,15 @@
-import useAuth from "../../hooks/useAuth"
-import { useNavigate } from "react-router-dom"
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const { logout, user } = useAuth()
+  const { logout, user } = useAuth();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
-    logout()
-    navigate("/")
-  }
+    logout();
+    navigate("/");
+  };
 
   return (
     <div className="w-full h-[70px] bg-white border-b flex items-center justify-between px-8">
@@ -30,7 +30,7 @@ const Navbar = () => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

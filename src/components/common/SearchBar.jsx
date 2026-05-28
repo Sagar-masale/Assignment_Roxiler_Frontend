@@ -7,7 +7,7 @@ const SearchBar = ({ search, setSearch }) => {
       onChange={(e) => setSearch(e.target.value)}
       className="w-full md:w-[400px] border rounded-xl px-4 py-3 outline-none"
     />
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

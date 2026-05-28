@@ -5,10 +5,7 @@ const DashboardTable = ({ headers, data }) => {
         <thead className="bg-gray-100">
           <tr>
             {headers.map((item, index) => (
-              <th
-                key={index}
-                className="text-left p-4 whitespace-nowrap"
-              >
+              <th key={index} className="text-left p-4 whitespace-nowrap">
                 {item}
               </th>
             ))}
@@ -19,10 +16,7 @@ const DashboardTable = ({ headers, data }) => {
           {data.map((row, index) => (
             <tr key={index} className="border-t">
               {Object.values(row).map((value, i) => (
-                <td
-                  key={i}
-                  className="p-4 whitespace-nowrap"
-                >
+                <td key={i} className="p-4 whitespace-nowrap">
                   {value}
                 </td>
               ))}
@@ -31,7 +25,7 @@ const DashboardTable = ({ headers, data }) => {
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default DashboardTable
+export default DashboardTable;

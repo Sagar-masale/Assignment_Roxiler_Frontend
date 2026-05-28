@@ -1,45 +1,36 @@
-import { useState } from "react"
-import API from "../../api/axios"
-import toast from "react-hot-toast"
+import { useState } from "react";
+import API from "../../api/axios";
+import toast from "react-hot-toast";
 
-const RatingModal = ({
-  storeId,
-  closeModal,
-  fetchStores,
-}) => {
-  const [rating, setRating] = useState(1)
-  const [loading, setLoading] = useState(false)
+const RatingModal = ({ storeId, closeModal, fetchStores }) => {
+  const [rating, setRating] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const submitHandler = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
 
-      const { data } = await API.post(
-        "/ratings/submit",
-        {
-          storeId,
-          rating,
-        }
-      )
+      const { data } = await API.post("/ratings/submit", {
+        storeId,
+        rating,
+      });
 
-      toast.success(data.message)
+      toast.success(data.message);
 
-      fetchStores()
+      fetchStores();
 
-      closeModal()
+      closeModal();
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
       <div className="bg-white rounded-2xl p-8 w-[400px] space-y-5">
-        <h1 className="text-2xl font-semibold">
-          Submit Rating
-        </h1>
+        <h1 className="text-2xl font-semibold">Submit Rating</h1>
 
         <select
           value={rating}
@@ -71,7 +62,7 @@ const RatingModal = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RatingModal
+export default RatingModal;

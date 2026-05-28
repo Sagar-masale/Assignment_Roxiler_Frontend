@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 
 const UserForm = ({ onSubmit, loading }) => {
   const [formData, setFormData] = useState({
@@ -7,19 +7,19 @@ const UserForm = ({ onSubmit, loading }) => {
     address: "",
     password: "",
     role: "user",
-  })
+  });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const submitHandler = (e) => {
-    e.preventDefault()
-    onSubmit(formData)
-  }
+    e.preventDefault();
+    onSubmit(formData);
+  };
 
   return (
     <form
@@ -74,7 +74,7 @@ const UserForm = ({ onSubmit, loading }) => {
         {loading ? "Please wait..." : "Submit"}
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default UserForm
+export default UserForm;
