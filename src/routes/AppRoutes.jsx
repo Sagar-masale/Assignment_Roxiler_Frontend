@@ -12,7 +12,7 @@ import UserDetails from "../pages/admin/UserDetails";
 
 import UserStores from "../pages/admin/Stores";
 import UserProfile from "../pages/user/Profile";
-import UserUpdatePassword from "../pages/owner/UpdatePassword";
+import UserUpdatePassword from "../pages/user/UpdatePassword";
 
 import OwnerDashboard from "../pages/owner/Dashboard";
 import OwnerRatings from "../pages/owner/Ratings";
